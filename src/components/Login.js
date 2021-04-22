@@ -3,7 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import { login } from '../services/auth.service';
+import * as AuthService from '../services/auth.service';
 
 const Login = (props) => {
 
@@ -33,7 +33,7 @@ const Login = (props) => {
         form.current.validateAll();
     
         if (checkBtn.current.context._errors.length === 0) {
-          login(username, password).then(
+            AuthService.login(username, password).then(
             () => {
               props.history.push("/profile");
               window.location.reload();
